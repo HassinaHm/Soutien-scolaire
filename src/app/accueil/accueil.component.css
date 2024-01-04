@@ -1,0 +1,25 @@
+.font{
+    font-family: 'Open Sans', sans-serif;  
+    font-size: x-large;
+    font-weight: 500;
+    position: center;
+    text-align: center;
+    color:rgb(5, 5, 22);
+    
+}
+/* card-list.component.css */
+.img{
+    position: center;
+}
+.card-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  
+  .example-card {
+    max-width: 400px;
+  }
+  .div{
+    position: center;
+  }

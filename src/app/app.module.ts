@@ -10,6 +10,9 @@ import { EtudiantComponent } from './etudiant/etudiant.component';
 import { ProfesseurComponent } from './professeur/professeur.component';
 import { AddEtudComponent } from './add-etud/add-etud.component';
 import { AddProfComponent } from './add-prof/add-prof.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatCardModule } from '@angular/material/card';
+
 
 @NgModule({
   declarations: [
@@ -24,7 +27,9 @@ import { AddProfComponent } from './add-prof/add-prof.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatCardModule
   ],
   providers: [
     provideClientHydration()
