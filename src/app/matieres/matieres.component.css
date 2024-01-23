@@ -1,0 +1,35 @@
+.subjects-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    height: 400px;
+    width: 100%;
+    padding: 100px;
+    background-color: #fff;
+    margin-top: 50px;
+  }
+p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    font-weight: 800;
+    line-height: 1.5rem;
+}
+  
+  .subject-button {
+    flex: 1 0 calc(25% - 20px); /* 25% width with margin between buttons */
+    padding: 15px;
+    margin: 10px;
+    background-color: #dbca34;
+    color: #fff; 
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 90px; /* Set a fixed width or use flex properties for responsiveness */
+    font-size: 16px;
+  }
+  
+  /* Media query for responsiveness */
+  @media (max-width: 600px) {
+    .subject-button {
+        flex: 1 0 calc(50% - 20px);
+    }}

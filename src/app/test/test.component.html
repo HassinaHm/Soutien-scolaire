@@ -1,0 +1,7 @@
+<div class="test" *ngFor="let test of tests">
+    <p> {{ test.nom }} - {{ test.prenom }} - {{ test.email }}</p>
+    <img [src]="getImageUrl(test)" alt="Test Image" />
+  </div>
+
+  <app-add-test></app-add-test>
+  

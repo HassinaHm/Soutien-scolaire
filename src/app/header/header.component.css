@@ -1,19 +1,26 @@
 .right{
-    margin-left: 400px;
+    margin-left: 200px;
     position: relative;
-    margin-top: -30px;
 }
 .header-font{
     font-family: 'Bebas Neue', sans-serif;
     position: center;
-    margin-left: 300px;
-    font-size: x-large;
+    font-size: 24px;
     font-weight: 800;
+    margin-right: 300px;
+    color: #F4CE14;
 }
+.header-font a {
+    color: #F4CE14;
+    text-decoration: none;
+   }
 .header-font2{
     font-family: 'Bebas Neue', sans-serif;
     position: center;
     text-align: center;
-    font-size: x-large;
+    font-size: 20px;
     font-weight: 500;
+}
+.header-font2:hover{
+  color: #F4CE14;
 }

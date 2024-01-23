@@ -2,30 +2,19 @@
 @import 'bootstrap/dist/css/bootstrap.min.css';
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Bungee+Spice&family=Open+Sans:wght@300;500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400&family=Roboto:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Roboto:wght@300&display=swap');
+html {
+  scroll-behavior: smooth;
+}
 
 body {
     font-family: 'Open Sans', sans-serif;  
     margin: 0; 
     padding: 0;
+    background-image: url('assets/images/bienvenue.jpg');
 
   }
   
-  .container {
-    width: 80%;
-    margin: 0 auto;
-  }
-  
-  .header {
-    background-color: #fff;
-    padding: 10px;
-    text-align: center;
-    box-shadow: 0px 0px 44px 0px rgba(0, 0, 0, 0.10);
-    border-radius: 10px;
-    width: 100%;
-    margin: 1%;
-    display: flex;
-
-  }
   .show{
     animation:  slideIn  2s ease;
   }
@@ -69,4 +58,4 @@ body {
   }
   
 html, body { height: 100%; }
-body { margin: 0;  }
+
