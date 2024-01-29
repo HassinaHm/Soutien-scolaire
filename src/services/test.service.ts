@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Test } from '../../src/app/models/test';  // Import the Test model
+import { Test } from '../../src/app/models/test';  
 
 
 @Injectable({
@@ -9,6 +9,7 @@ import { Test } from '../../src/app/models/test';  // Import the Test model
 })
 export class TestService {
   private apiUrl = 'http://localhost:8080/api/tests';
+  private imageUrl = 'http://localhost:8080/api/images';
 
   constructor(private httpClient: HttpClient) {}
 
@@ -36,7 +37,10 @@ export class TestService {
       return undefined;
     }
   }
-  
+
+  getImageUrl( imageName: string): string {
+    return `${this.imageUrl}/${imageName}`;
+  }
   
   
   updateTest(id: number, test: Test): Observable<Test> {

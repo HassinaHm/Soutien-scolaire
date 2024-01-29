@@ -23,12 +23,8 @@ export class TestComponent implements OnInit {
     );
   }
 
-  getImageUrl(test: Test): string {
-    if (test && test.image) {
-
-      return `http://localhost:8080/api/tests/${test.id}/image/${test.image}`;
-    }
-    return '';  
+  getImageUrl(imageName: string): string {
+    return this.testService.getImageUrl(imageName);
   }
 
 
