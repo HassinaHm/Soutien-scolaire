@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Test } from '../models/test';
 import { TestService } from '../../services/test.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 
 @Component({
@@ -16,51 +16,52 @@ export class AddTestComponent implements OnInit {
   imageUrl!: string;
   newTest!: Test;
 
-  
-  constructor(private fb: FormBuilder, private testService: TestService) {}
+
+  constructor(private fb: FormBuilder, private testService: TestService,
+    private httpClient: HttpClient) { }
 
   ngOnInit(): void {
     this.testForm = this.fb.group({
       nom: ['', Validators.required],
       prenom: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      image: [null]
-      });
+      email: ['', Validators.required],
+      image: ['']
+    });
   }
-
- 
-addTest(): void {
-  if (this.testForm.valid && this.selectedImage) {
-    const formData = new FormData();
-    formData.append('file', this.selectedImage);
-    const headers = new HttpHeaders().set('Authorization', 'Bearer your-token');
-
-    this.testService.uploadImage(formData)
-      .then(imageUrl => {
-        const newTest = this.testForm.value;
-        newTest.image = imageUrl;
-
-        this.testService.saveTest(newTest)
-          .subscribe(
-            createdTest => {
-              console.log('Test added successfully:', createdTest);
-              // Reset the form after successful submission
-              this.testForm.reset();
-              // Store the image URL for display
-              this.imageUrl = createdTest.image;
-            },
-            error => console.error('Error adding test:', error)
-          );
-      })
-      .catch(error => {
+  
+  async addTest(): Promise<void> {
+    if (this.testForm.valid && this.selectedImage) {
+      const formData = new FormData();
+  
+      // Append form fields and file to formData
+      formData.append('nom', this.testForm.get('nom')!.value);
+      formData.append('prenom', this.testForm.get('prenom')!.value);
+      formData.append('email', this.testForm.get('email')!.value);
+      formData.append('file', this.selectedImage);
+  
+      try {
+        const uploadUrl = 'http://localhost:8080/api/tests';
+        
+        // Set headers to specify Content-Type as multipart/form-data
+        const headers = new HttpHeaders().set('Authorization', 'Bearer your-token');
+  
+        const imageUrl = await this.httpClient.post(uploadUrl, formData, { headers }).toPromise();
+        console.log('Image uploaded successfully:', imageUrl);
+  
+        // Reset the form after successful submission
+        this.testForm.reset();
+      } catch (error) {
         console.error('Error uploading image:', error);
-      });
-  } else {
-    console.error('Form is invalid or no image selected');
+      }
+    } else {
+      console.error('Form is invalid or no image selected');
+    }
   }
-}
   
   
+  
+
+
   // Function to handle file input change
   handleImageChange(event: any): void {
     const file = event.target.files[0];
@@ -71,5 +72,5 @@ addTest(): void {
     }
   }
 
-  
+
 }

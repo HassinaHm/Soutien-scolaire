@@ -5,18 +5,14 @@
   
     <label for="prenom">Prenom:</label>
     <input type="text" id="prenom" formControlName="prenom">
+    <label for="email">Email:</label>
+    <input type="text" id="email" formControlName="email">
+    
     <div class="form-group">
         <label for="image">Image</label>
         <input type="file" id="image"  (change)="handleImageChange($event)">
       </div>
-    
-      <div *ngIf="imageUrl">
-        <p>Uploaded Image:</p>
-        <img [src]="imageUrl" alt="Uploaded Image">
-      </div>
-  
-    <label for="email">Email:</label>
-    <input type="text" id="email" formControlName="email">
+
   
     <button type="submit">Add Test</button>
   </form>
