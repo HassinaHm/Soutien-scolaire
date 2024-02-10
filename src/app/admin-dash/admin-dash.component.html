@@ -1,1 +1,35 @@
-<p>admin-dash works!</p>
+<div class="container" style="width: 100%;">
+    <div class="header">
+        <div class="header-d">
+            <div class="logo"></div>
+            <div class="user">
+              <div class="user-name">ADMINISTRATEUR</div>
+            </div>
+          </div>   
+ </div>
+
+    <div class="main-container">
+      <div class="side-nav">
+        <div class="nav-items">
+            <div routerLink="/professeurs" class="nav-item">
+                <i class="fa-sharp fa-solid fa-id-card" style="margin: 10px;"></i><span>Professeurs</span>
+            </div>
+            <div routerLink="/etudiants"  class="nav-item">
+                <i class="fa-solid fa-users" style="margin: 10px;"></i><span>Etudiants</span>
+            </div>
+            <div routerLink="/matieres"  class="nav-item">
+                <i class="fa-solid fa-school" style="margin: 10px;"></i> <span>Matieres</span>
+            </div>
+            <div routerLink="/add-admin"  class="nav-item">
+                <i class="fa-solid fa-user-plus" style="margin: 10px;"></i> <span>Add admin</span>
+            </div>
+            <div class="nav-item">
+                <i class="fa-sharp fa-solid fa-right-from-bracket" style="margin: 10px;"></i> <span>Logout</span>
+            </div>
+          </div>  
+    </div>
+    <div class="main" style="background-color: rgb(221, 224, 185); width: 100% ; padding: 30px;">
+        <router-outlet></router-outlet>
+      </div>
+  </div>
+  </div>

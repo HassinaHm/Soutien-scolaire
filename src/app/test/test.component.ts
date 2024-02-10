@@ -2,6 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Test } from '../models/test';
 import { TestService } from '../../services/test.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-test',
@@ -11,53 +13,68 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 export class TestComponent implements OnInit {
   tests: Test[] = [];
   editedTest: Test | null = null;
+  testForm!: FormGroup;
+  selectedImage!: File;
 
   @ViewChild('editTestModal') editTestModal: any;
 
-  constructor(private modalService: NgbModal, private testService: TestService) {}
+  constructor(private modalService: NgbModal, private testService: TestService,
+    private fb: FormBuilder, private httpClient: HttpClient) { }
 
-  openEditTestModal(content: any) {
-    this.modalService.open(content, { centered: true });
+  ngOnInit(): void {
+    this.loadTests();
+    this.testForm = this.fb.group({
+      nom: ['', Validators.required],
+      prenom: ['', Validators.required],
+      email: ['', Validators.required],
+      image: ['']
+    });
   }
 
-  saveTestChanges(): void {
-    if (this.editedTest) { // Null check
-      const testId = this.editedTest.id;
-      this.testService.updateTest(testId, this.editedTest).subscribe(
-        (updatedTest: Test) => {
-          const index = this.tests.findIndex(t => t.id === updatedTest.id);
-          if (index !== -1) {
-            this.tests[index] = updatedTest;
-          }
-          this.modalService.dismissAll();
-        },
-        (error) => {
-          console.error('Error saving test changes:', error);
+  async saveTestChanges(): Promise<void> {
+    if (this.editedTest && this.selectedImage) {
+      try {
+        const formData = new FormData();
+        formData.append('nom', this.editedTest.nom);
+        formData.append('prenom', this.editedTest.prenom);
+        formData.append('email', this.editedTest.email);
+    
+        formData.append('file', this.selectedImage, this.selectedImage.name);
+              
+        const imageUrl = await this.testService.uploadImage(formData);
+    
+        if (imageUrl) {
+          this.editedTest.image = imageUrl!;
         }
-      );
+    
+        const testId = this.editedTest.id;
+        this.testService.updateTest(testId, this.editedTest).subscribe(
+          (updatedTest: Test) => {
+            const index = this.tests.findIndex(t => t.id === updatedTest.id);
+            if (index !== -1) {
+              this.tests[index] = updatedTest;
+            }
+            this.modalService.dismissAll();
+          },
+          (error) => {
+            console.error('Error saving test changes:', error);
+          }
+        );
+      } catch (error) {
+        console.error('Error uploading image and saving test changes:', error);
+      }
+    } else {
+      console.error('Form is invalid or no image selected');
     }
   }
 
   onImageSelected(event: any): void {
-    const file: File = event.target.files[0]; // Get the selected file
+    const file: File = event.target.files[0];
     if (file) {
-      // If a file is selected
-      const reader: FileReader = new FileReader(); // Create a new FileReader instance
-      reader.onload = (e: any) => {
-        // When the file is loaded
-        // Access the image URL from 'e.target.result' and use it as needed
-        const imageUrl: string = e.target.result;
-        // You can now use this 'imageUrl' to display the selected image or perform any other logic
-        console.log('Selected image URL:', imageUrl);
-        // Perform further actions such as displaying the image or uploading it to a server
-      };
-      reader.readAsDataURL(file); // Read the file as a Data URL
+      this.selectedImage = file;
+    } else {
+      console.error('No image selected');
     }
-  }
-  
-
-  ngOnInit(): void {
-    this.loadTests();
   }
 
   loadTests(): void {
@@ -67,8 +84,14 @@ export class TestComponent implements OnInit {
     );
   }
 
-  editTest(test: Test): void {
-    this.editedTest = test; 
+  editTest(testId: number): void {
+    const test = this.tests.find(t => t.id === testId);
+    if (test) {
+      this.editedTest = test;
+      this.openEditTestModal(this.editTestModal);
+    } else {
+      console.error(`Test with ID ${testId} not found.`);
+    }
   }
 
   deleteTest(test: Test): void {
@@ -86,5 +109,9 @@ export class TestComponent implements OnInit {
 
   getImageUrl(imageName: string): string {
     return this.testService.getImageUrl(imageName);
+  }
+
+  openEditTestModal(content: any): void {
+    this.modalService.open(content, { centered: true });
   }
 }

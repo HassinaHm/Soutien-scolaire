@@ -5,21 +5,21 @@
 	</div>
 	<div class="modal-body">
 		<form>
-			<div class="mb-3">
-				<label for="nom">Nom</label>
-				<input type="text" class="form-control" id="nom" placeholder="Enter Nom" [(ngModel)]="editedTest!.nom">
-			</div>
+		  <div class="mb-3">
+        <label for="nom">Nom</label>
+        <input type="text" class="form-control" id="nom" placeholder="Enter Nom" [(ngModel)]="editedTest!.nom" [ngModelOptions]="{standalone: true}">
+    </div>
 			<div class="mb-3">
 				<label for="prenom">Prenom</label>
-				<input type="text" class="form-control" id="prenom" placeholder="Enter Prenom" [(ngModel)]="editedTest!.prenom">
+				<input type="text" class="form-control" id="prenom" placeholder="Enter Prenom" [(ngModel)]="editedTest!.prenom" [ngModelOptions]="{standalone: true}">
 			</div>
 			<div class="mb-3">
 				<label for="email">Email</label>
-				<input type="email" class="form-control" id="email" placeholder="Enter Email" [(ngModel)]="editedTest!.email">
+				<input type="email" class="form-control" id="email" placeholder="Enter Email" [(ngModel)]="editedTest!.email" [ngModelOptions]="{standalone: true}">
 			</div>
 			<div class="mb-3">
 				<label for="image">Image</label>
-				<input type="file" class="form-control" id="image" (change)="onImageSelected($event)">
+        <input type="file" class="form-control" id="image" (change)="onImageSelected($event)">
 			</div>
 		</form>
 	</div>
@@ -31,8 +31,8 @@
 <div class="test" *ngFor="let test of tests">
     <p> {{ test.nom }} - {{ test.prenom }} - {{ test.email }}</p>
     <img [src]="getImageUrl(test.image)" alt="Test Image" />
-    <button (click)="editTest(test)">Edit</button>
-   <div><button (click)="deleteTest(test)">Delete</button></div> 
+    <button (click)="editTest(test.id)" >Edit</button>
+   <div><button (click)="deleteTest(test)" >Delete</button></div> 
 </div>
 
 <app-add-test></app-add-test>
