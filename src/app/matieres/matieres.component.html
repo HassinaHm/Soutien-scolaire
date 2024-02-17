@@ -1,0 +1,37 @@
+<!-- <div class="subjects-container">
+  <section>
+    <p>Matieres</p>
+  </section>
+    <div *ngFor="let matieres of pagedMatieres" >
+        <button class="subject-button" (click)="getprofessor(matieres.nom)" >
+          {{ matieres.nom }} 
+        </button>
+
+    </div>
+</div> -->
+<div class="subjects-container">
+  <section>
+    <p>Matieres</p>
+  </section>
+
+  <div *ngFor="let matiere of matieres">
+    <button class="subject-button" (click)="onMatiereClick(matiere)">
+      {{ matiere.nom }} 
+    </button>
+  </div>
+</div>
+
+<div class="subjects-container" *ngIf="selectedMatiere">
+  <p>Professeurs de {{ selectedMatiere.nom }}</p>
+  <ul *ngFor="let professor of professors">
+    <a [routerLink]="['/professeur', professor.id]">{{ professor.nom }}</a>
+  </ul>
+</div>
+
+<div class="pagination">
+  <div *ngFor="let page of pages" (click)="setPage(page)" class="page-number">{{ page }}</div>
+</div>
+
+<button (click)="prevPage()" [disabled]="currentPage === 1" class="pagination-button"><i class="fa-solid fa-left-long"></i></button>
+<button (click)="nextPage()" [disabled]="currentPage === pages.length" class="pagination-button"><i class="fa-solid fa-arrow-right"></i></button>
+

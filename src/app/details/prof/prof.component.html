@@ -1,0 +1,33 @@
+<app-header></app-header>
+<div class="profs">
+  <section>
+    <p class="intro-text">
+      Nous sommes fiers de présenter une plateforme dédiée à faciliter vos services éducatifs, mettant en avant une
+      liste complète de professeurs qualifiés prêts à accompagner votre parcours académique.
+    </p>
+  </section>
+  <section>
+    <div class="prof-images">
+      <div *ngFor="let professeur of pagedProfs" class="professeur-card">
+        <a [routerLink]="['/professeur', professeur.id]">
+          <img [src]="professeur.imageUrl" [alt]="professeur.nom" class="prof-image">
+        </a>
+        <h3 class="prof-name">{{ professeur.nom }} {{ professeur.prenom }}</h3>
+        <p class="prof-email">{{ professeur.email }}</p>
+        <p class="prof-tarifh">Tarif par heure: {{ professeur.tarifh }} <i class="fas fa-money-bill"></i></p>
+        <p class="prof-numberTel">{{ professeur.numberTel }}</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="pagination">
+  <div *ngFor="let page of pages" (click)="setPage(page)" class="page-number">{{ page }}</div>
+</div>
+
+<button (click)="prevPage()" [disabled]="currentPage === 1" class="pagination-button"><i
+    class="fa-solid fa-left-long"></i></button>
+<button (click)="nextPage()" [disabled]="currentPage === pages.length" class="pagination-button"><i
+    class="fa-solid fa-arrow-right"></i></button>
+
+    <app-footer></app-footer>

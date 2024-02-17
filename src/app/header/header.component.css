@@ -1,0 +1,31 @@
+.right{
+    margin-left: 200px;
+    position: relative;
+}
+.header-font{
+    font-family: 'Montserrat', sans-serif;
+    position: center;
+    font-size: 24px;
+    font-weight: 800;
+    margin-right: 300px;
+    color: #F4CE14;
+}
+.header-font a {
+    color: #F4CE14;
+    text-decoration: none;
+   }
+.header-font2{
+    font-family: 'Montserrat', sans-serif;
+    position: center;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 500;
+    color: rgb(2, 12, 56);
+
+}
+.header-font2:hover{
+  color: #F4CE14;
+}
+a{
+    text-decoration: none;
+}

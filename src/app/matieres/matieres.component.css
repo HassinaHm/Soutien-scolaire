@@ -1,0 +1,66 @@
+.subjects-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    height: 300px;
+    width: 100%;
+    padding: 100px;
+    background-color: rgba(255, 255, 255, 0.911);
+    margin-top: 50px;
+  }
+p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    font-weight: 800;
+    line-height: 1.5rem;
+    color: rgb(2, 12, 56);
+
+}
+.subject-button {
+  flex: 0 0 calc(25% - 20px); 
+  position: horizontal;
+  padding: 15px;
+  margin: 10px;
+  background-color: rgba(235, 235, 6, 0.884);
+  color: #fff; 
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  width: 90px; /* Set a fixed width or use flex properties for responsiveness */
+  font-size: 16px;
+}
+
+.subject-button:hover {
+  color: rgb(206, 189, 168);
+}
+
+.pagination-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 100px; 
+  margin-left: 200px;
+}
+
+.pagination {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: 200px;
+}
+
+.page-number {
+  padding: 5px 10px;
+  margin: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  color: rgb(75, 5, 40);
+
+}
+  
+  /* Media query for responsiveness */
+  @media (max-width: 600px) {
+    .subject-button {
+        flex: 1 0 calc(50% - 20px);
+    }}

@@ -1,0 +1,97 @@
+/* You can add global styles to this file, and also import other style files */
+@import 'bootstrap/dist/css/bootstrap.min.css';
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Bungee+Spice&family=Open+Sans:wght@300;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400&family=Roboto:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Roboto:wght@300&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Aboreto&family=Exo:wght@100;200;300;400;500;600;700;800;900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Roboto:wght@100;300;400;500;700;900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  position: relative;
+  font-family: 'Roboto', sans-serif;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  border-radius: .5rem;
+  background-color: #fff;
+  margin: 1.25rem 0 1.25rem 0;
+  box-shadow: 0 .25rem .5rem #e6edef;
+
+  .card-head {
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid #edf1f7;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
+  .card-body {
+    padding: 1rem 1.5rem;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-image: url('assets/images/bienvenue.jpg');
+  background-attachment: fixed;
+}
+
+.show {
+  animation: slideIn 2s ease;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+/* Responsive styles for screens up to 1080px wide */
+@media screen and (max-width: 1080px) {
+  .container {
+    width: 90%;
+  }
+
+  .header {
+    font-size: 1.2em;
+  }
+}
+
+/* Responsive styles for smaller screens (phones) */
+@media screen and (max-width: 768px) {
+  .container {
+    width: 100%;
+  }
+
+  .header {
+    font-size: 1em;
+  }
+}
+
+/* Additional responsive styles for even smaller screens */
+@media screen and (max-width: 480px) {
+  .header {
+    font-size: 0.8em;
+  }
+}
+
+html,
+body {
+  height: 100%;
+}
