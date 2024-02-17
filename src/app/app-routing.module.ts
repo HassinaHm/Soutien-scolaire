@@ -9,54 +9,73 @@ import { TestComponent } from './test/test.component';
 import { AdminDashComponent } from './admin-dash/admin-dash.component';
 import { ProfDashComponent } from './prof-dash/prof-dash.component';
 import { ProfComponent } from './details/prof/prof.component';
-import { MatiereComponent } from './details/matiere/matiere.component';
+import { MatiereDComponent } from './details/matiere/matiered.component';
+import { ProfessorDetailComponent } from './professeur/professor-detail/professor-detail.component';
+import { ProfesseursComponent } from './admin-dash/professeurs/professeurs.component';
+import { AdminMatieresComponent } from './admin-dash/admin-matieres/admin-matieres.component';
+import { EtudiantsComponent } from './admin-dash/etudiants/etudiants.component';
+
 
 const routes: Routes = [
   {
-    path:'',
-    component:AccueilComponent
+    path: '',
+    component: AccueilComponent
   },
   {
-    path:'login',
-    component:LoginComponent
+    path: 'login',
+    component: LoginComponent
   },
   {
-    path:'register',
-    component:RegisterComponent
+    path: 'register',
+    component: RegisterComponent
   },
   {
-    path:'register-etud',
-    component:RegisterEtudComponent
+    path: 'register-etud',
+    component: RegisterEtudComponent
   },
   {
-    path:'prof-etud',
-    component:ProfEtudComponent
+    path: 'prof-etud',
+    component: ProfEtudComponent
   },
   {
-    path:'test',
-    component:TestComponent
+    path: 'test',
+    component: TestComponent
   },
   {
-    path:'professeur',
-    component:ProfComponent
+    path: 'professeur',
+    component: ProfComponent
   },
   {
-    path:'prof-dash',
-    component:ProfDashComponent
+    path: 'prof-dash',
+    component: ProfDashComponent
+  },
+  // { path: 'login', component: LoginComponent },
+  // { path: 'adminAuth', component: AdminDashComponent, canActivate: [AuthGuard], data: { roles: ['admin'] } },
+  // { path: 'prof-dash', component: ProfDashComponent, canActivate: [AuthGuard], data: { roles: ['professeur'] } },
+  // { path: 'etud-dash', component: EtudiantsComponent, canActivate: [AuthGuard], data: { roles: ['etudiant'] } },
+  // { path: '', redirectTo: '/login', pathMatch: 'full' },
+  // { path: '**', redirectTo: '/login' },
+  { 
+    path: 'adminAuth', 
+    component: AdminDashComponent,
+    children: [
+      { path: 'admin-prof', component: ProfesseursComponent },
+      { path: 'admin-etudiant', component: EtudiantsComponent },
+      { path: 'admin-matiere', component: AdminMatieresComponent },
+      // other child routes
+      { path: '', redirectTo: 'admin-prof', pathMatch: 'full' } 
+    ]
   },
   
   {
-    path:'admin',
-    component:AdminDashComponent
+    path: 'matieres',
+    component: MatiereDComponent
   },
   {
-    path:'matieres',
-    component:MatiereComponent
+    path: 'professeur/:id',
+    component: ProfessorDetailComponent
   },
-  {  
-  path:'adminAuth',
-  component:AdminDashComponent
-}
+
 ];
 
 @NgModule({

@@ -8,8 +8,8 @@ import { Test } from '../../src/app/models/test';
   providedIn: 'root'
 })
 export class TestService {
-  private apiUrl = 'http://localhost:8080/api/tests';
-  private imageUrl = 'http://localhost:8080/api/images';
+  private apiUrl = 'http://localhost:8081/api/tests';
+  private imageUrl = 'http://localhost:8081/api/images';
 
   constructor(private httpClient: HttpClient) {}
 

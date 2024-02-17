@@ -9,8 +9,8 @@ import { Professeur } from '../models/professeur';
 export class ProfesseurService {
 
 
-  private apiUrl = 'http://localhost:8080/api/professeurs';
-  private imageUrl = 'http://localhost:8080/api/images';
+  private apiUrl = 'http://localhost:8081/api/professeurs';
+  private imageUrl = 'http://localhost:8081/api/images';
 
   constructor(private httpClient: HttpClient) {}
 
@@ -29,7 +29,7 @@ export class ProfesseurService {
   }
 
   async uploadImage(formData: FormData): Promise<string | undefined> {
-    const uploadUrl = 'http://localhost:8080/api/images/upload';
+    const uploadUrl = 'http://localhost:8081/api/images/upload';
     try {
       const imageUrl = await this.httpClient.post(uploadUrl, formData, { responseType: 'text' }).toPromise();
       return imageUrl as string;

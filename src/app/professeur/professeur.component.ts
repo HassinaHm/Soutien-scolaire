@@ -2,7 +2,6 @@ import { Component , OnInit,EventEmitter, Input, Output  } from '@angular/core';
 import { ProfesseurService } from '../services/professeur.service';
 import { Professeur } from '../models/professeur';
 
-
 @Component({
   selector: 'app-professeur',
   templateUrl: './professeur.component.html',
@@ -30,7 +29,10 @@ export class ProfesseurComponent implements OnInit  {
       },
       error => console.error('Error loading professeurs', error)
     );
+    
   }
+
+
   
   get pages(): number[] {
     const totalPages = Math.ceil(this.profs.length / this.pageSize);

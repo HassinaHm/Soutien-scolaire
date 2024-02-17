@@ -3,33 +3,44 @@
         <div class="header-d">
             <div class="logo"></div>
             <div class="user">
-              <div class="user-name">ADMINISTRATEUR</div>
+                <div class="user-name">ADMINISTRATEUR</div>
             </div>
-          </div>   
- </div>
+        </div>
+    </div>
 
     <div class="main-container">
-      <div class="side-nav">
-        <div class="nav-items">
-            <div routerLink="/professeurs" class="nav-item">
-                <i class="fa-sharp fa-solid fa-id-card" style="margin: 10px;"></i><span>Professeurs</span>
+        <div class="side-nav">
+            <div class="nav-items">
+                <div class="nav-item">
+                    <a routerLink="/adminAuth/admin-prof">
+                        <i class="fa-sharp fa-solid fa-id-card" style="margin: 10px;"></i><span>Professeurs</span>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a routerLink="/adminAuth/admin-etudiant">
+                        <i class="fa-solid fa-users" style="margin: 10px;"></i><span>Etudiants</span>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a routerLink="/adminAuth/admin-matiere">
+                        <i class="fa-solid fa-school" style="margin: 10px;"></i> <span>Matieres</span>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a routerLink="/adminAuth/add-admin">
+                        <i class="fa-solid fa-user-plus" style="margin: 10px;"></i> <span>Add admin</span>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <!-- Add the logic to logout -->
+                    <i class="fa-sharp fa-solid fa-right-from-bracket" style="margin: 10px;"></i> <span>Logout</span>
+                </div>
             </div>
-            <div routerLink="/etudiants"  class="nav-item">
-                <i class="fa-solid fa-users" style="margin: 10px;"></i><span>Etudiants</span>
-            </div>
-            <div routerLink="/matieres"  class="nav-item">
-                <i class="fa-solid fa-school" style="margin: 10px;"></i> <span>Matieres</span>
-            </div>
-            <div routerLink="/add-admin"  class="nav-item">
-                <i class="fa-solid fa-user-plus" style="margin: 10px;"></i> <span>Add admin</span>
-            </div>
-            <div class="nav-item">
-                <i class="fa-sharp fa-solid fa-right-from-bracket" style="margin: 10px;"></i> <span>Logout</span>
-            </div>
-          </div>  
+
+        </div>
+
     </div>
-    <div class="main" style="background-color: rgb(221, 224, 185); width: 100% ; padding: 30px;">
+    <div class="main-content">
         <router-outlet></router-outlet>
-      </div>
-  </div>
-  </div>
+    </div>
+</div>

@@ -6,6 +6,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CommonModule } from '@angular/common';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -27,10 +29,12 @@ import { ProfDashComponent } from './prof-dash/prof-dash.component';
 import { AddTestComponent } from './add-test/add-test.component';
 import { ProfComponent } from './details/prof/prof.component';
 import { MatieresComponent } from './matieres/matieres.component';
-import { MatiereComponent } from './details/matiere/matiere.component';
+import { MatiereDComponent } from './details/matiere/matiered.component';
 import { EtudiantsComponent } from './admin-dash/etudiants/etudiants.component';
 import { ProfesseursComponent } from './admin-dash/professeurs/professeurs.component';
-import { AdminMatieresComponent } from './admin-dash/matieres/matieres.component';
+import { ProfessorDetailComponent } from './professeur/professor-detail/professor-detail.component';
+import { AdminMatieresComponent } from './admin-dash/admin-matieres/admin-matieres.component';
+import { AddProfComponent } from './admin-dash/add-prof/add-prof.component';
 
 @NgModule({
   declarations: [
@@ -50,11 +54,12 @@ import { AdminMatieresComponent } from './admin-dash/matieres/matieres.component
     MatieresComponent,
     AddTestComponent,
     ProfComponent,
-    MatiereComponent,
+    MatiereDComponent,
     MatieresComponent,
     EtudiantsComponent,
     ProfesseursComponent,
-    AdminMatieresComponent
+    ProfessorDetailComponent,
+    AdminMatieresComponent,AddProfComponent
     
   ],
   imports: [
@@ -62,7 +67,7 @@ import { AdminMatieresComponent } from './admin-dash/matieres/matieres.component
     AppRoutingModule,
     BrowserAnimationsModule,
     MatCardModule,MatIconModule,FormsModule,ReactiveFormsModule
-    ,HttpClientModule,CommonModule,NgxPaginationModule
+    ,HttpClientModule,CommonModule,NgxPaginationModule,MatTableModule,MatPaginatorModule
   ],
   providers: [
     provideClientHydration()

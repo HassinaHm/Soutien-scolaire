@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MatiereComponent } from './matiere.component';
+import { AdminMatieresComponent } from './admin-matieres.component';
 
-describe('MatiereComponent', () => {
-  let component: MatiereComponent;
-  let fixture: ComponentFixture<MatiereComponent>;
+describe('AdminMatieresComponent', () => {
+  let component: AdminMatieresComponent;
+  let fixture: ComponentFixture<AdminMatieresComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [MatiereComponent]
+      declarations: [AdminMatieresComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(MatiereComponent);
+    fixture = TestBed.createComponent(AdminMatieresComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
