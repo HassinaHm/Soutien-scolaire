@@ -10,7 +10,7 @@ export class ProfesseurService {
 
 
   private apiUrl = 'http://localhost:8081/api/professeurs';
-  private imageUrl = 'http://localhost:8081/api/images';
+  private imageUrl = 'http://localhost:8081/api';
 
   constructor(private httpClient: HttpClient) {}
 
@@ -24,7 +24,7 @@ export class ProfesseurService {
     return this.httpClient.get<Professeur>(`${this.apiUrl}/${id}`);
   }
 
-  saveTest(prof: Professeur): Observable<Professeur> {
+  saveProf(prof: Professeur): Observable<Professeur> {
     return this.httpClient.post<Professeur>(this.apiUrl, prof);
   }
 
@@ -40,7 +40,7 @@ export class ProfesseurService {
   }
 
   getImageUrl( imageName: string): string {
-    return `${this.imageUrl}/${imageName}`;
+    return `${this.imageUrl}${imageName}`;
   }
   
   

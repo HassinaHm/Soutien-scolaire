@@ -1,47 +1,94 @@
+<!-- professeurs.component.html -->
+
 <div class="right">
-    
-    <button class="btn btn-success"><app-add-prof></app-add-prof></button>
-
+<app-add-prof></app-add-prof>
 </div>
-<p class="font">Liste des professeurs </p>  
-<table mat-table [dataSource]="dataSource" class=" top">
 
-    <ng-container matColumnDef="nom">
-      <th mat-header-cell *matHeaderCellDef> Nom </th>
-      <td mat-cell *matCellDef="let element"> {{element.nom}} {{element.prenom}} </td>
-    </ng-container>
-  
-    <ng-container matColumnDef="numberTel">
-      <th mat-header-cell *matHeaderCellDef> NUMERO DE TELEPHONE </th>
-      <td mat-cell *matCellDef="let element"> {{element.numberTel}} </td>
-    </ng-container>
-  
-  
-    <ng-container matColumnDef="email">
-      <th mat-header-cell *matHeaderCellDef> EMAIL </th>
-      <td mat-cell *matCellDef="let element"> {{element.email}} </td>
-    </ng-container>
+<p class="font">Liste des professeurs </p>
 
-    <ng-container matColumnDef="tarifh">
-        <th mat-header-cell *matHeaderCellDef> Tarif par heure </th>
-        <td mat-cell *matCellDef="let element"> {{element.tarifh}} </td>
-      </ng-container>
+<table mat-table [dataSource]="dataSource" class="top">
+  <ng-container matColumnDef="nom">
+    <th mat-header-cell *matHeaderCellDef> Nom </th>
+    <td mat-cell *matCellDef="let element"> {{ element.nom }} </td>
+ </ng-container>
 
-    <ng-container matColumnDef="actions">
-      <th mat-header-cell *matHeaderCellDef> Actions </th>
-      <td mat-cell *matCellDef="let element">
-        <button class="btn2"  (click)="editElement()">
-          <img src="assets/images/edit.png" alt="Picture 1"  style="width: 20px; height: 20px;">
-        </button>
-        <button class="btn2"  (click)="deleteElement()">
-          <img src="assets/images/delete.png" alt="Picture 1"  style="width: 20px; height: 20px;">
-        </button>
-      </td>
-    </ng-container>
-  
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-<tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+ <ng-container matColumnDef="prenom">
+  <th mat-header-cell *matHeaderCellDef> Prenom </th>
+  <td mat-cell *matCellDef="let element"> {{ element.prenom }} </td>
+</ng-container>
+<ng-container matColumnDef="email">
+  <th mat-header-cell *matHeaderCellDef> Email </th>
+  <td mat-cell *matCellDef="let element"> {{ element.email }} </td>
+</ng-container>
+
+<ng-container matColumnDef="numberTel">
+  <th mat-header-cell *matHeaderCellDef> Telephone </th>
+  <td mat-cell *matCellDef="let element"> {{ element.numberTel }} </td>
+</ng-container>
+<ng-container matColumnDef="tarifh">
+  <th mat-header-cell *matHeaderCellDef> Tarif par heure </th>
+  <td mat-cell *matCellDef="let element"> {{ element.tarifh }} </td>
+</ng-container>
+<ng-container matColumnDef="imageUrl">
+  <th mat-header-cell *matHeaderCellDef> Image </th>
+  <td mat-cell *matCellDef="let element">
+    <img style="height: 20px; width: 20px;" [src]="getImageUrl(element.imageUrl)">
+</td>
+</ng-container>
+
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef> Actions </th>
+    <td mat-cell *matCellDef="let element">
+      <!-- Edit action -->
+      <img src="assets/images/edit.png" alt="Edit" (click)="editProf(element.id)" style="cursor: pointer; width: 20px; height: 20px;">
+      <!-- Delete action -->
+      <img src="assets/images/delete.png" alt="Delete" (click)="deleteProf(element)" style="cursor: pointer; width: 20px; height: 20px;">
+    </td>
+  </ng-container>
+
+
+
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
 
-<mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons  class="pagination"></mat-paginator>
- 
+<mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons class="pagination"></mat-paginator>
+
+<ng-template #editTestModal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Edit Professeur</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="mb-3">
+        <label for="nom">Nom</label>
+        <input type="text" class="form-control" id="nom" placeholder="Enter Nom" [(ngModel)]="editedProf!.nom" [ngModelOptions]="{standalone: true}">
+      </div>
+      <div class="mb-3">
+        <label for="prenom">Prenom</label>
+        <input type="text" class="form-control" id="prenom" placeholder="Enter Prenom" [(ngModel)]="editedProf!.prenom" [ngModelOptions]="{standalone: true}">
+      </div>
+      <div class="mb-3">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" id="email" placeholder="Enter Email" [(ngModel)]="editedProf!.email" [ngModelOptions]="{standalone: true}">
+      </div>
+      <div class="mb-3">
+        <label for="tarifh">Tarif par heure</label>
+        <input type="number" class="form-control" id="tarifh" placeholder="Enter Tarif par heure" [(ngModel)]="editedProf!.tarifh" [ngModelOptions]="{standalone: true}">
+      </div>
+      <div class="mb-3">
+        <label for="cv">CV</label>
+        <input type="text" class="form-control" id="cv" placeholder="cv" [(ngModel)]="editedProf!.cv" [ngModelOptions]="{standalone: true}">
+      </div>
+      <div class="mb-3">
+        <label for="image">Image</label>
+        <input type="file" class="form-control" id="image" (change)="onImageSelected($event)">
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="saveProfChanges()">Save</button>
+  </div>
+</ng-template>

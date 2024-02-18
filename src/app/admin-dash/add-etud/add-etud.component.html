@@ -1,1 +1,30 @@
-<p>add-etud works!</p>
+<ng-template #content let-dialogRef="dialogRef" style="overflow: hidden">
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Ajouter un Étudiant</h4>
+    </div>
+    <div class="modal-body">
+      <form [formGroup]="etudiantForm">
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="nom">Nom</label>
+            <input id="nom" class="form-control" formControlName="nom" placeholder="Nom" name="nom" type="text" />
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="prenom">Prénom</label>
+            <input id="prenom" class="form-control" formControlName="prenom" placeholder="Prénom" name="prenom" type="text" />
+          </div>
+        </div>
+        <div class="col-md-6 mb-3">
+          <label for="email">Email</label>
+          <input id="email" class="form-control" formControlName="email" placeholder="Email" name="email" type="email" />
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-primary" (click)="saveEtudiant()">Save</button>
+      <button type="button" class="btn btn-outline-danger" (click)="closeModal()">Close</button>
+    </div>
+  </ng-template>
+  
+  <button class="btn btn-success" (click)="open(content)">Ajouter</button>
+  

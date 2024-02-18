@@ -32,8 +32,11 @@ export class ProfesseurComponent implements OnInit  {
     
   }
 
+  getImageUrl(imageName: string): string {
+    return this.professeurService.getImageUrl(imageName);
+  }
 
-  
+
   get pages(): number[] {
     const totalPages = Math.ceil(this.profs.length / this.pageSize);
     return Array.from({ length: totalPages }, (_, i) => i + 1);

@@ -3,12 +3,12 @@ import { BrowserModule, provideClientHydration } from '@angular/platform-browser
 import { FormsModule } from '@angular/forms'; 
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CommonModule } from '@angular/common';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 
+import { AddEtudComponent } from './admin-dash/add-etud/add-etud.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -59,7 +59,8 @@ import { AddProfComponent } from './admin-dash/add-prof/add-prof.component';
     EtudiantsComponent,
     ProfesseursComponent,
     ProfessorDetailComponent,
-    AdminMatieresComponent,AddProfComponent
+    AdminMatieresComponent,AddProfComponent,
+    AddEtudComponent
     
   ],
   imports: [

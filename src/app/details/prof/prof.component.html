@@ -10,7 +10,7 @@
     <div class="prof-images">
       <div *ngFor="let professeur of pagedProfs" class="professeur-card">
         <a [routerLink]="['/professeur', professeur.id]">
-          <img [src]="professeur.imageUrl" [alt]="professeur.nom" class="prof-image">
+          <img [src]="getImageUrl(professeur.imageUrl)" [alt]="professeur.nom" class="prof-image">
         </a>
         <h3 class="prof-name">{{ professeur.nom }} {{ professeur.prenom }}</h3>
         <p class="prof-email">{{ professeur.email }}</p>
@@ -30,4 +30,4 @@
 <button (click)="nextPage()" [disabled]="currentPage === pages.length" class="pagination-button"><i
     class="fa-solid fa-arrow-right"></i></button>
 
-    <app-footer></app-footer>
+<app-footer></app-footer>

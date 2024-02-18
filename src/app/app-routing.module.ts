@@ -62,7 +62,6 @@ const routes: Routes = [
       { path: 'admin-prof', component: ProfesseursComponent },
       { path: 'admin-etudiant', component: EtudiantsComponent },
       { path: 'admin-matiere', component: AdminMatieresComponent },
-      // other child routes
       { path: '', redirectTo: 'admin-prof', pathMatch: 'full' } 
     ]
   },
