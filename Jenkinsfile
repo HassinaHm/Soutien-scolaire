@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         DOCKER_REGISTRY_URL = 'https://hub.docker.com'
-        DOCKER_REGISTRY_USERNAME = credentials('hassinaelhamed')
+        DOCKER_REGISTRY_USERNAME = credentials('hassina.elhamed5@gmail.com')
         DOCKER_REGISTRY_PASSWORD = credentials('hassine22')
         DOCKER_IMAGE_NAME = 'angular'
     }
