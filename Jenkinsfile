@@ -3,8 +3,6 @@ pipeline {
 
     environment {
         DOCKER_REGISTRY_URL = 'https://hub.docker.com'
-        DOCKER_REGISTRY_USERNAME = credentials('hassina.elhamed5@gmail.com')
-        DOCKER_REGISTRY_PASSWORD = credentials('hassine22')
         DOCKER_IMAGE_NAME = 'angular'
     }
 
@@ -31,7 +29,11 @@ pipeline {
         }
         stage('Docker Build') {
             steps {
-                sh 'docker build -t $DOCKER_IMAGE_NAME .'
+                script {
+                    docker.withRegistry('https://hub.docker.com', 'docker-credentials-id') {
+                        docker.build("$DOCKER_IMAGE_NAME")
+                    }
+                }
             }
         }
     }
