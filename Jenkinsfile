@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_REGISTRY_URL = 'https://hub.docker.com'
+        DOCKER_REGISTRY_URL = 'https://hub.docker.com/u/hassinahmd'
         DOCKER_IMAGE_NAME = 'angular'
     }
 
